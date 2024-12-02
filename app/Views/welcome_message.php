@@ -8,21 +8,21 @@
   <!-- color of address bar in mobile browser -->
   <meta name="theme-color" content="#F5C332">
   <!-- favicon  -->
-  <link rel="shortcut icon" href="<?=base_url()?>img/ui/logo.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="<?=base_url()?>front/img/ui/logo.ico" type="image/x-icon">
   <!-- font awesome css -->
-  <link rel="stylesheet" href="<?=base_url()?>css/plugins/font-awesome.min.css">
+  <link rel="stylesheet" href="<?=base_url()?>front/css/plugins/font-awesome.min.css">
   <!-- bootstrap css -->
-  <link rel="stylesheet" href="<?=base_url()?>css/plugins/bootstrap.min.css">
+  <link rel="stylesheet" href="<?=base_url()?>front/css/plugins/bootstrap.min.css">
   <!-- swiper css -->
-  <link rel="stylesheet" href="<?=base_url()?>css/plugins/swiper.min.css">
+  <link rel="stylesheet" href="<?=base_url()?>front/css/plugins/swiper.min.css">
   <!-- datepicker css -->
-  <link rel="stylesheet" href="<?=base_url()?>css/plugins/datepicker.css">
+  <link rel="stylesheet" href="<?=base_url()?>front/css/plugins/datepicker.css">
   <!-- mapbox css -->
-  <link href="<?=base_url()?>css/plugins/mapbox-style.css" rel='stylesheet'>
+  <link href="<?=base_url()?>front/css/plugins/mapbox-style.css" rel='stylesheet'>
   <!-- fancybox css -->
-  <link rel="stylesheet" href="<?=base_url()?>css/plugins/fancybox.min.css">
+  <link rel="stylesheet" href="<?=base_url()?>front/css/plugins/fancybox.min.css">
   <!-- starbelly css -->
-  <link rel="stylesheet" href="<?=base_url()?>css/style.css">
+  <link rel="stylesheet" href="<?=base_url()?>front/css/style.css">
   <!-- page title -->
   <title>Starbelly</title>
 </head>
@@ -54,7 +54,7 @@
         <div class="sb-top-bar">
           <a href="home-2.html" class="sb-logo-frame">
             <!-- logo img -->
-            <img src="<?=base_url()?>img/ui/logo.svg" alt="Starbelly">
+            <img src="<?=base_url()?>front/img/ui/logo.svg" alt="Starbelly">
           </a>
           <!-- menu -->
           <div class="sb-right-side">
@@ -118,7 +118,7 @@
               <!-- button -->
               <div class="sb-btn sb-btn-2 sb-btn-gray sb-btn-icon sb-m-0 sb-btn-cart">
                 <span class="sb-icon">
-                  <img src="<?=base_url()?>img/ui/icons/cart.svg" alt="icon">
+                  <img src="<?=base_url()?>front/img/ui/icons/cart.svg" alt="icon">
                 </span>
                 <i class="sb-cart-number">5</i>
               </div>
@@ -147,12 +147,12 @@
             <h4>Instagram</h4><i class="fas fa-arrow-down"></i>
           </div>
           <ul class="sb-instagram sb-mb-30">
-            <li><a href="#."><img src="<?=base_url()?>img/instagram/1.jpg" alt="instagram"></a></li>
-            <li><a href="#."><img src="<?=base_url()?>img/instagram/2.jpg" alt="instagram"></a></li>
-            <li><a href="#."><img src="<?=base_url()?>img/instagram/3.jpg" alt="instagram"></a></li>
-            <li><a href="#."><img src="<?=base_url()?>img/instagram/4.jpg" alt="instagram"></a></li>
-            <li><a href="#."><img src="<?=base_url()?>img/instagram/5.jpg" alt="instagram"></a></li>
-            <li><a href="#."><img src="<?=base_url()?>img/instagram/6.jpg" alt="instagram"></a></li>
+            <li><a href="#."><img src="<?=base_url()?>front/img/instagram/1.jpg" alt="instagram"></a></li>
+            <li><a href="#."><img src="<?=base_url()?>front/img/instagram/2.jpg" alt="instagram"></a></li>
+            <li><a href="#."><img src="<?=base_url()?>front/img/instagram/3.jpg" alt="instagram"></a></li>
+            <li><a href="#."><img src="<?=base_url()?>front/img/instagram/4.jpg" alt="instagram"></a></li>
+            <li><a href="#."><img src="<?=base_url()?>front/img/instagram/5.jpg" alt="instagram"></a></li>
+            <li><a href="#."><img src="<?=base_url()?>front/img/instagram/6.jpg" alt="instagram"></a></li>
           </ul>
           <hr>
           <div class="sb-ib-title-frame sb-mb-30">
@@ -160,7 +160,7 @@
           </div>
           <a href="publication-1.html" class="sb-blog-card sb-blog-card-sm sb-mb-30">
             <div class="sb-cover-frame">
-              <img src="<?=base_url()?>img/blog/1.jpg" alt="cover">
+              <img src="<?=base_url()?>front/img/blog/1.jpg" alt="cover">
             </div>
             <div class="sb-blog-card-descr">
               <h5 class="sb-mb-5">Simple Homemade Tomato Soup</h5>
@@ -169,7 +169,7 @@
           </a>
           <a href="publication-1.html" class="sb-blog-card sb-blog-card-sm sb-mb-30">
             <div class="sb-cover-frame">
-              <img src="<?=base_url()?>img/blog/2.jpg" alt="cover">
+              <img src="<?=base_url()?>front/img/blog/2.jpg" alt="cover">
             </div>
             <div class="sb-blog-card-descr">
               <h5 class="sb-mb-5">Thai Coconut Soup with Tofu and Rice</h5>
@@ -178,7 +178,7 @@
           </a>
           <a href="publication-1.html" class="sb-blog-card sb-blog-card-sm sb-mb-30">
             <div class="sb-cover-frame">
-              <img src="<?=base_url()?>img/blog/3.jpg" alt="cover">
+              <img src="<?=base_url()?>front/img/blog/3.jpg" alt="cover">
             </div>
             <div class="sb-blog-card-descr">
               <h5 class="sb-mb-5">21 Things You Should Absolutely Be Buying at ALDI</h5>
@@ -204,7 +204,7 @@
           </div>
           <a href="product.html" class="sb-menu-item sb-menu-item-sm sb-mb-15">
             <div class="sb-cover-frame">
-              <img src="<?=base_url()?>img/menu/4.jpg" alt="product">
+              <img src="<?=base_url()?>front/img/menu/4.jpg" alt="product">
             </div>
             <div class="sb-card-tp">
               <h4 class="sb-card-title">Saumon Gravlax</h4>
@@ -213,7 +213,7 @@
           </a>
           <a href="product.html" class="sb-menu-item sb-menu-item-sm sb-mb-15">
             <div class="sb-cover-frame">
-              <img src="<?=base_url()?>img/menu/1.jpg" alt="product">
+              <img src="<?=base_url()?>front/img/menu/1.jpg" alt="product">
             </div>
             <div class="sb-card-tp">
               <h4 class="sb-card-title">Chevrefrit au miel</h4>
@@ -222,7 +222,7 @@
           </a>
           <a href="product.html" class="sb-menu-item sb-menu-item-sm sb-mb-15">
             <div class="sb-cover-frame">
-              <img src="<?=base_url()?>img/menu/2.jpg" alt="product">
+              <img src="<?=base_url()?>front/img/menu/2.jpg" alt="product">
             </div>
             <div class="sb-card-tp">
               <h4 class="sb-card-title">Croustillant de poisson</h4>
@@ -231,7 +231,7 @@
           </a>
           <a href="product.html" class="sb-menu-item sb-menu-item-sm sb-mb-15">
             <div class="sb-cover-frame">
-              <img src="<?=base_url()?>img/menu/3.jpg" alt="product">
+              <img src="<?=base_url()?>front/img/menu/3.jpg" alt="product">
             </div>
             <div class="sb-card-tp">
               <h4 class="sb-card-title">Stracciatella</h4>
@@ -240,7 +240,7 @@
           </a>
           <a href="product.html" class="sb-menu-item sb-menu-item-sm sb-mb-15">
             <div class="sb-cover-frame">
-              <img src="<?=base_url()?>img/menu/5.jpg" alt="product">
+              <img src="<?=base_url()?>front/img/menu/5.jpg" alt="product">
             </div>
             <div class="sb-card-tp">
               <h4 class="sb-card-title">Carpaccio de daurade</h4>
@@ -285,7 +285,7 @@
                   <!-- button -->
                   <a href="menu-1.html" class="sb-btn">
                     <span class="sb-icon">
-                      <img src="<?=base_url()?>img/ui/icons/menu.svg" alt="icon">
+                      <img src="<?=base_url()?>front/img/ui/icons/menu.svg" alt="icon">
                     </span>
                     <span>Our menu</span>
                   </a>
@@ -293,7 +293,7 @@
                   <!-- button -->
                   <a href="about-1.html" class="sb-btn sb-btn-2 sb-btn-gray">
                     <span class="sb-icon">
-                      <img src="<?=base_url()?>img/ui/icons/arrow.svg" alt="icon">
+                      <img src="<?=base_url()?>front/img/ui/icons/arrow.svg" alt="icon">
                     </span>
                     <span>About us</span>
                   </a>
@@ -304,15 +304,15 @@
             </div>
             <div class="col-lg-6">
               <div class="sb-illustration-1">
-                <img src="<?=base_url()?>img/illustrations/girl.png" alt="girl" class="sb-girl">
+                <img src="<?=base_url()?>front/img/illustrations/girl.png" alt="girl" class="sb-girl">
                 <div class="sb-cirkle-1"></div>
                 <div class="sb-cirkle-2"></div>
                 <div class="sb-cirkle-3"></div>
                 <div class="sb-cirkle-4"></div>
                 <div class="sb-cirkle-5"></div>
-                <img src="<?=base_url()?>img/illustrations/3.svg" alt="phones" class="sb-pik-1">
-                <img src="<?=base_url()?>img/illustrations/1.svg" alt="phones" class="sb-pik-2">
-                <img src="<?=base_url()?>img/illustrations/2.svg" alt="phones" class="sb-pik-3">
+                <img src="<?=base_url()?>front/img/illustrations/3.svg" alt="phones" class="sb-pik-1">
+                <img src="<?=base_url()?>front/img/illustrations/1.svg" alt="phones" class="sb-pik-2">
+                <img src="<?=base_url()?>front/img/illustrations/2.svg" alt="phones" class="sb-pik-3">
               </div>
             </div>
           </div>
@@ -353,7 +353,7 @@
             <div class="col-lg-6 align-self-center">
               <div class="sb-illustration-2 sb-mb-90">
                 <div class="sb-interior-frame">
-                  <img src="<?=base_url()?>img/illustrations/interior.jpg" alt="interior" class="sb-interior">
+                  <img src="<?=base_url()?>front/img/illustrations/interior.jpg" alt="interior" class="sb-interior">
                 </div>
                 <div class="sb-square"></div>
                 <div class="sb-cirkle-1"></div>
@@ -385,7 +385,7 @@
               <!-- button -->
               <a href="shop-1.html" class="sb-btn sb-m-0">
                 <span class="sb-icon">
-                  <img src="<?=base_url()?>img/ui/icons/arrow.svg" alt="icon">
+                  <img src="<?=base_url()?>front/img/ui/icons/arrow.svg" alt="icon">
                 </span>
                 <span>Go shopping now</span>
               </a>
@@ -397,7 +397,7 @@
               <a href="shop-list-1.html" class="sb-categorie-card sb-categorie-card-2 sb-mb-30">
                 <div class="sb-card-body">
                   <div class="sb-category-icon">
-                    <img src="<?=base_url()?>img/categories/1.png" alt="icon">
+                    <img src="<?=base_url()?>front/img/categories/1.png" alt="icon">
                   </div>
                   <div class="sb-card-descr">
                     <h3 class="sb-mb-10">Starters</h3>
@@ -410,7 +410,7 @@
               <a href="shop-list-1.html" class="sb-categorie-card sb-categorie-card-2 sb-mb-30">
                 <div class="sb-card-body">
                   <div class="sb-category-icon">
-                    <img src="<?=base_url()?>img/categories/2.png" alt="icon">
+                    <img src="<?=base_url()?>front/img/categories/2.png" alt="icon">
                   </div>
                   <div class="sb-card-descr">
                     <h3 class="sb-mb-10">Main dishes</h3>
@@ -423,7 +423,7 @@
               <a href="shop-list-1.html" class="sb-categorie-card sb-categorie-card-2 sb-mb-30">
                 <div class="sb-card-body">
                   <div class="sb-category-icon">
-                    <img src="<?=base_url()?>img/categories/3.png" alt="icon">
+                    <img src="<?=base_url()?>front/img/categories/3.png" alt="icon">
                   </div>
                   <div class="sb-card-descr">
                     <h3 class="sb-mb-10">Drinks</h3>
@@ -436,7 +436,7 @@
               <a href="shop-list-1.html" class="sb-categorie-card sb-categorie-card-2 sb-mb-30">
                 <div class="sb-card-body">
                   <div class="sb-category-icon">
-                    <img src="<?=base_url()?>img/categories/4.png" alt="icon">
+                    <img src="<?=base_url()?>front/img/categories/4.png" alt="icon">
                   </div>
                   <div class="sb-card-descr">
                     <h3 class="sb-mb-10">Desserts</h3>
@@ -471,7 +471,7 @@
               <!-- button -->
               <a href="menu-1.html" class="sb-btn">
                 <span class="sb-icon">
-                  <img src="<?=base_url()?>img/ui/icons/menu.svg" alt="icon">
+                  <img src="<?=base_url()?>front/img/ui/icons/menu.svg" alt="icon">
                 </span>
                 <span>Full menu</span>
               </a>
@@ -481,9 +481,9 @@
           <div class="swiper-container sb-short-menu-slider-4i">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <a data-fancybox="menu" data-no-swup href="<?=base_url()?>img/menu/3.jpg" class="sb-menu-item">
+                <a data-fancybox="menu" data-no-swup href="<?=base_url()?>front/img/menu/3.jpg" class="sb-menu-item">
                   <div class="sb-cover-frame">
-                    <img src="<?=base_url()?>img/menu/3.jpg" alt="product">
+                    <img src="<?=base_url()?>front/img/menu/3.jpg" alt="product">
                   </div>
                   <div class="sb-card-tp">
                     <h4 class="sb-card-title">Carpaccio de daurade</h4>
@@ -502,9 +502,9 @@
                 </a>
               </div>
               <div class="swiper-slide">
-                <a data-fancybox="menu" data-no-swup href="<?=base_url()?>img/menu/1.jpg" class="sb-menu-item">
+                <a data-fancybox="menu" data-no-swup href="<?=base_url()?>front/img/menu/1.jpg" class="sb-menu-item">
                   <div class="sb-cover-frame">
-                    <img src="<?=base_url()?>img/menu/1.jpg" alt="product">
+                    <img src="<?=base_url()?>front/img/menu/1.jpg" alt="product">
                   </div>
                   <div class="sb-card-tp">
                     <h4 class="sb-card-title">Chevrefrit au miel</h4>
@@ -523,9 +523,9 @@
                 </a>
               </div>
               <div class="swiper-slide">
-                <a data-fancybox="menu" data-no-swup href="<?=base_url()?>img/menu/2.jpg" class="sb-menu-item">
+                <a data-fancybox="menu" data-no-swup href="<?=base_url()?>front/img/menu/2.jpg" class="sb-menu-item">
                   <div class="sb-cover-frame">
-                    <img src="<?=base_url()?>img/menu/2.jpg" alt="product">
+                    <img src="<?=base_url()?>front/img/menu/2.jpg" alt="product">
                     <div class="sb-badge sb-vegan"><i class="fas fa-leaf"></i> Vegan</div>
                   </div>
                   <div class="sb-card-tp">
@@ -545,9 +545,9 @@
                 </a>
               </div>
               <div class="swiper-slide">
-                <a data-fancybox="menu" data-no-swup href="<?=base_url()?>img/menu/9.jpg" class="sb-menu-item">
+                <a data-fancybox="menu" data-no-swup href="<?=base_url()?>front/img/menu/9.jpg" class="sb-menu-item">
                   <div class="sb-cover-frame">
-                    <img src="<?=base_url()?>img/menu/9.jpg" alt="product">
+                    <img src="<?=base_url()?>front/img/menu/9.jpg" alt="product">
                     <div class="sb-badge sb-hot"><i class="fas fa-pepper-hot"></i> Hot</div>
                   </div>
                   <div class="sb-card-tp">
@@ -567,9 +567,9 @@
                 </a>
               </div>
               <div class="swiper-slide">
-                <a data-fancybox="menu" data-no-swup href="<?=base_url()?>img/menu/5.jpg" class="sb-menu-item">
+                <a data-fancybox="menu" data-no-swup href="<?=base_url()?>front/img/menu/5.jpg" class="sb-menu-item">
                   <div class="sb-cover-frame">
-                    <img src="<?=base_url()?>img/menu/5.jpg" alt="product">
+                    <img src="<?=base_url()?>front/img/menu/5.jpg" alt="product">
                     <div class="sb-badge sb-vegan"><i class="fas fa-leaf"></i> Vegan</div>
                   </div>
                   <div class="sb-card-tp">
@@ -589,9 +589,9 @@
                 </a>
               </div>
               <div class="swiper-slide">
-                <a data-fancybox="menu" data-no-swup href="<?=base_url()?>img/menu/4.jpg" class="sb-menu-item">
+                <a data-fancybox="menu" data-no-swup href="<?=base_url()?>front/img/menu/4.jpg" class="sb-menu-item">
                   <div class="sb-cover-frame">
-                    <img src="<?=base_url()?>img/menu/4.jpg" alt="product">
+                    <img src="<?=base_url()?>front/img/menu/4.jpg" alt="product">
                   </div>
                   <div class="sb-card-tp">
                     <h4 class="sb-card-title">Stracciatella</h4>
@@ -627,7 +627,7 @@
               <!-- button -->
               <a href="about-1.html" class="sb-btn sb-m-0">
                 <span class="sb-icon">
-                  <img src="<?=base_url()?>img/ui/icons/arrow.svg" alt="icon">
+                  <img src="<?=base_url()?>front/img/ui/icons/arrow.svg" alt="icon">
                 </span>
                 <span>More about us</span>
               </a>
@@ -638,7 +638,7 @@
             <div class="col-lg-3">
               <div class="sb-team-member sb-mb-30">
                 <div class="sb-photo-frame sb-mb-15">
-                  <img src="<?=base_url()?>img/team/1.png" alt="Team member">
+                  <img src="<?=base_url()?>front/img/team/1.png" alt="Team member">
                 </div>
                 <div class="sb-member-description">
                   <h4 class="sb-mb-10">Paul Trueman</h4>
@@ -655,7 +655,7 @@
             <div class="col-lg-3">
               <div class="sb-team-member sb-mb-30">
                 <div class="sb-photo-frame sb-mb-15">
-                  <img src="<?=base_url()?>img/team/2.png" alt="Team member">
+                  <img src="<?=base_url()?>front/img/team/2.png" alt="Team member">
                 </div>
                 <div class="sb-member-description">
                   <h3 class="sb-mb-10">Emma Newman</h3>
@@ -672,7 +672,7 @@
             <div class="col-lg-3">
               <div class="sb-team-member sb-mb-30">
                 <div class="sb-photo-frame sb-mb-15">
-                  <img src="<?=base_url()?>img/team/3.png" alt="Team member">
+                  <img src="<?=base_url()?>front/img/team/3.png" alt="Team member">
                 </div>
                 <div class="sb-member-description">
                   <h3 class="sb-mb-10">Oscar Oldman</h3>
@@ -689,7 +689,7 @@
             <div class="col-lg-3">
               <div class="sb-team-member sb-mb-30">
                 <div class="sb-photo-frame sb-mb-15">
-                  <img src="<?=base_url()?>img/team/4.png" alt="Team member">
+                  <img src="<?=base_url()?>front/img/team/4.png" alt="Team member">
                 </div>
                 <div class="sb-member-description">
                   <h3 class="sb-mb-10">Ed Freeman</h3>
@@ -717,20 +717,20 @@
               <div class="sb-cta-text">
                 <h2 class="sb-h1 sb-mb-30">Download our mobile app.</h2>
                 <p class="sb-text sb-mb-30">Consectetur numquam poro nemo veniam<br>eligendi rem adipisci quo modi.</p>
-                <a href="#." target="_blank" data-no-swup class="sb-download-btn"><img src="<?=base_url()?>img/buttons/1.svg" alt="img"></a>
-                <a href="#." target="_blank" data-no-swup class="sb-download-btn"><img src="<?=base_url()?>img/buttons/2.svg" alt="img"></a>
+                <a href="#." target="_blank" data-no-swup class="sb-download-btn"><img src="<?=base_url()?>front/img/buttons/1.svg" alt="img"></a>
+                <a href="#." target="_blank" data-no-swup class="sb-download-btn"><img src="<?=base_url()?>front/img/buttons/2.svg" alt="img"></a>
               </div>
             </div>
             <div class="col-lg-6">
               <div class="sb-illustration-3">
-                <img src="<?=base_url()?>img/illustrations/phones.png" alt="phones" class="sb-phones">
+                <img src="<?=base_url()?>front/img/illustrations/phones.png" alt="phones" class="sb-phones">
                 <div class="sb-cirkle-1"></div>
                 <div class="sb-cirkle-2"></div>
                 <div class="sb-cirkle-3"></div>
                 <div class="sb-cirkle-4"></div>
-                <img src="<?=base_url()?>img/illustrations/1.svg" alt="phones" class="sb-pik-1">
-                <img src="<?=base_url()?>img/illustrations/2.svg" alt="phones" class="sb-pik-2">
-                <img src="<?=base_url()?>img/illustrations/3.svg" alt="phones" class="sb-pik-3">
+                <img src="<?=base_url()?>front/img/illustrations/1.svg" alt="phones" class="sb-pik-1">
+                <img src="<?=base_url()?>front/img/illustrations/2.svg" alt="phones" class="sb-pik-2">
+                <img src="<?=base_url()?>front/img/illustrations/3.svg" alt="phones" class="sb-pik-3">
               </div>
             </div>
           </div>
@@ -744,7 +744,7 @@
           <div class="sb-footer-frame">
             <a href="home-1.html" class="sb-logo-frame">
               <!-- logo img -->
-              <img src="<?=base_url()?>img/ui/logo.svg" alt="Starbelly">
+              <img src="<?=base_url()?>front/img/ui/logo.svg" alt="Starbelly">
             </a>
             <ul class="sb-social">
               <li><a href="#."><i class="far fa-circle"></i></a></li>
@@ -765,25 +765,25 @@
   <!-- app wrapper end -->
 
   <!-- jquery js -->
-  <script src="<?=base_url()?>js/plugins/jquery.min.js"></script>
+  <script src="<?=base_url()?>front/js/plugins/jquery.min.js"></script>
   <!-- smooth scroll js -->
-  <script src="<?=base_url()?>js/plugins/smooth-scroll.js"></script>
+  <script src="<?=base_url()?>front/js/plugins/smooth-scroll.js"></script>
   <!-- swup js -->
-  <script src="<?=base_url()?>js/plugins/swup.min.js"></script>
+  <script src="<?=base_url()?>front/js/plugins/swup.min.js"></script>
   <!-- swiper js -->
-  <script src="<?=base_url()?>js/plugins/swiper.min.js"></script>
+  <script src="<?=base_url()?>front/js/plugins/swiper.min.js"></script>
   <!-- datepicker js -->
-  <script src="<?=base_url()?>js/plugins/datepicker.js"></script>
+  <script src="<?=base_url()?>front/js/plugins/datepicker.js"></script>
   <!-- isotope js -->
-  <script src="<?=base_url()?>js/plugins/isotope.js"></script>
+  <script src="<?=base_url()?>front/js/plugins/isotope.js"></script>
   <!-- sticky -->
-  <script src="<?=base_url()?>js/plugins/sticky.js"></script>
+  <script src="<?=base_url()?>front/js/plugins/sticky.js"></script>
   <!-- mapbox js -->
-  <script src="<?=base_url()?>js/plugins/mapbox.min.js"></script>
+  <script src="<?=base_url()?>front/js/plugins/mapbox.min.js"></script>
   <!-- fancybox js -->
-  <script src="<?=base_url()?>js/plugins/fancybox.min.js"></script>
+  <script src="<?=base_url()?>front/js/plugins/fancybox.min.js"></script>
   <!-- starbelly js -->
-  <script src="<?=base_url()?>js/main.js"></script>
+  <script src="<?=base_url()?>front/js/main.js"></script>
 
 </body>
 
