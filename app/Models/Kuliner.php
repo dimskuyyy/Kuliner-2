@@ -83,6 +83,9 @@ class Kuliner extends Model
         // Add filter member
         if ($memberId) $builder = $builder->where('kuliner.member_id', $memberId);
 
+        // Don't include deleted kuliner
+        $builder = $builder->where('kuliner.kuliner_deleted_at IS NULL');
+
         // Add group by
         $builder = $builder->groupBy('kuliner.kuliner_id');
 
@@ -104,6 +107,7 @@ class Kuliner extends Model
             ->select('kuliner.latitude')
             ->select('kuliner.longitude')
             ->select('kuliner.kuliner_created_at')
+            ->select('kuliner.kuliner_updated_at')
             ->select('kuliner.tipe_kuliner')
             ->select('user.user_nama')
             ->select('media.media_nama')
@@ -111,6 +115,35 @@ class Kuliner extends Model
             ->select('media.media_slug')
             ->select('media.media_path')
             ->selectCount('post.post_id', 'jumlah_post');
+        
+        return $builder->get();
+    }
+
+    public function getDetailKuliner(string $slugKuliner)
+    {
+        $builder = $this->builder();
+
+        // Add join
+        $builder = $builder->join('media', 'media.media_id = kuliner.media_id')
+            ->join('membership', 'membership.member_id = kuliner.member_id')
+            ->join('user', 'user.user_id = membership.user_id');
+        
+        // Define column selection
+        $builder = $builder->select('kuliner.kuliner_id')
+            ->select('kuliner.nama_kuliner')
+            ->select('kuliner.slug_kuliner')
+            ->select('kuliner.deskripsi')
+            ->select('kuliner.alamat')
+            ->select('kuliner.latitude')
+            ->select('kuliner.longitude')
+            ->select('kuliner.kuliner_created_at')
+            ->select('kuliner.kuliner_updated_at')
+            ->select('kuliner.tipe_kuliner')
+            ->select('user.user_nama')
+            ->select('media.media_nama')
+            ->select('media.media_type')
+            ->select('media.media_slug')
+            ->select('media.media_path');
         
         return $builder->get();
     }
