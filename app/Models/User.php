@@ -121,7 +121,7 @@ class User extends Model
     {
         $data['data']['user_password'] = password_hash($data['data']['user_password'], PASSWORD_BCRYPT);
         $data['data']['user_created_at'] = date('Y-m-d H:i:s');
-        $data['data']['user_created_by'] = AuthUser()->id;
+        $data['data']['user_created_by'] = AuthUser()?->id;
         return $data;
     }
     public function beforeUpdate($data)

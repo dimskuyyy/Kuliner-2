@@ -25,7 +25,24 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
         crossorigin="" />
+    <!-- Toastr css -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>back/plugins/toastr/toastr.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>front/css/style.css">
+
+    <style>
+        .btn-primary, .btn-primary:active {
+            border: solid 2px #FFFFFF;
+            background-color: #F5C332;
+            color: #231E41;
+        }
+
+        .btn-primary:hover, .btn-primary:focus {
+            border: solid 2px #FFFFFF;
+            background-color: #dba70a;
+            color: #231E41;
+        }
+    </style>
+
     <?= $this->renderSection('styles') ?>
     <!-- page title -->
     <title>Starbelly</title>
@@ -34,31 +51,32 @@
 <body>
     <div class="sb-app">
         <!-- preloader -->
-        <div class="sb-preloader">
-            <div class="sb-preloader-bg"></div>
-            <div class="sb-preloader-body">
-                <div class="sb-loading">
-                    <div class="sb-percent"><span class="sb-preloader-number" data-count="101">00</span><span>%</span></div>
+            <!-- <div class="sb-preloader">
+                <div class="sb-preloader-bg"></div>
+                <div class="sb-preloader-body">
+                    <div class="sb-loading">
+                        <div class="sb-percent"><span class="sb-preloader-number" data-count="101">00</span><span>%</span></div>
+                    </div>
+                    <div class="sb-loading-bar">
+                        <div class="sb-bar"></div>
+                    </div>
                 </div>
-                <div class="sb-loading-bar">
-                    <div class="sb-bar"></div>
-                </div>
-            </div>
-        </div>
+            </div> -->
         <!-- preloader end -->
         <!-- click effect -->
-        <div class="sb-click-effect"></div>
+        <!-- <div class="sb-click-effect"></div> -->
         <!-- loader -->
-        <div class="sb-load"></div>
+        <!-- <div class="sb-load"></div> -->
         <!-- top bar -->
-        <?= $this->include('layout/front_header') ?>
-        <?= $this->renderSection('content') ?>
+        <div id="sb-dynamic-content" class="sb-transition-fade">
+            <?= $this->renderSection('content') ?>
+        </div>
 
-        <footer>
+        <!-- <footer>
             <div class="container">
                 <div class="sb-footer-frame">
                     <a href="home-1.html" class="sb-logo-frame">
-                        <!-- logo img -->
+                        logo img
                         <img src="<?= base_url() ?>front/img/ui/logo.png" alt="Starbelly">
                     </a>
                     <ul class="sb-social">
@@ -70,7 +88,7 @@
                     <div class="sb-copy">&copy; 2024 FoodPathPKU. All Rights Reserved.</div>
                 </div>
             </div>
-        </footer>
+        </footer> -->
     </div>
 
 
@@ -92,10 +110,18 @@
     <script src="<?= base_url() ?>front/js/plugins/mapbox.min.js"></script>
     <!-- fancybox js -->
     <script src="<?= base_url() ?>front/js/plugins/fancybox.min.js"></script>
+    <!-- Toastr js -->
+    <script src="<?php echo base_url() ?>back/plugins/toastr/toastr.min.js"></script>
     <!-- starbelly js -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin=""></script>
     <script src="<?= base_url() ?>front/js/main.js"></script>
+
+    <script src="<?php echo base_url() ?>back/js/base.js"></script>
+    <script>
+        var base_url = '<?php echo base_url(); ?>';
+    </script>
+
     <?= $this->renderSection('scripts') ?>
 </body>

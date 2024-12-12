@@ -2,6 +2,7 @@
 
 namespace Config;
 
+use App\Filters\GuestFilter;
 use CodeIgniter\Config\Filters as BaseFilters;
 use CodeIgniter\Filters\Cors;
 use CodeIgniter\Filters\CSRF;
@@ -40,6 +41,7 @@ class Filters extends BaseFilters
         'isSuperAdmin'  => SuperAdminFilter::class,
         'isMember'      => MemberFilter::class,
         'isLoggedIn'    => LoginFilter::class,
+        'guest'         => GuestFilter::class,
     ];
 
     /**

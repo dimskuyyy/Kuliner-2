@@ -11,13 +11,13 @@
                 <nav id="sb-dynamic-menu" class="sb-menu-transition" style="display: flex;justify-content: flex-end;">
                     <ul class="sb-navigation">
                         <li class="sb-has-children">
-                            <a href="<?=base_url()?>">Home</a>
+                            <a href="<?= base_url() ?>">Home</a>
                         </li>
                         <li class="sb-has-children">
-                            <a href="<?=base_url('kuliner')?>">Kuliner</a>
+                            <a href="<?= base_url('kuliner') ?>">Kuliner</a>
                         </li>
                         <li class="sb-has-children">
-                            <a href="<?=base_url('post')?>">Post</a>
+                            <a href="<?= base_url('post') ?>">Post</a>
                         </li>
                         <!-- <li class="sb-has-children">
                             <a href="about-1.html">K</a>
@@ -64,6 +64,17 @@
                         <li>
                             <a href="contact.html">Contact</a>
                         </li>
+                        <?php if (isGuest()): ?>
+                            <li>
+                                <a href="<?= route_to('front.auth.login') ?>" class="sb-btn m-0 px-3 py-2">
+                                    Masuk
+                                </a>
+                            </li>
+                        <?php else: ?>
+                            <li>
+                                <a href="contact.html">Profil</a>
+                            </li>
+                        <?php endif; ?>
                     </ul>
                 </nav>
             </div>
