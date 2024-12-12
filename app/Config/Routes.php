@@ -5,7 +5,14 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', '\App\Controllers\Front\Home::index');
+
+// Non member or admin authentication
+$routes->get('/register', '\App\Controllers\Front\Auth::register', ['as' => 'front.auth.register', 'filter' => ['guest']]);
+$routes->post('/register', '\App\Controllers\Front\Auth::storeUser', ['as' => 'front.auth.storeUser', 'filter' => ['guest']]);
+$routes->get('/login', '\App\Controllers\Front\Auth::login', ['as' => 'front.auth.login', 'filter' => ['guest']]);
+$routes->post('/login', '\App\Controllers\Front\Auth::auth', ['as' => 'front.auth.storeAuth', 'filter' => ['guest']]);
+
+$routes->get('/', '\App\Controllers\Front\Home::index', ['as' => 'front.index']);
 
 $routes->get('/kuliner', '\App\Controllers\Front\Kuliner::index');
 $routes->get('/kuliner/slug', '\App\Controllers\Front\Kuliner::detail');
