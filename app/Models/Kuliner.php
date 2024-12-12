@@ -182,4 +182,36 @@ class Kuliner extends Model
         
         return $builder->get();
     }
+
+    public function getGaleriKuliner(string $slugKuliner, bool $latest = true)
+    {
+        $builder = $this->builder();
+        
+        // Add join
+        $builder = $builder->join('galeri_kuliner', 'galeri_kuliner.kuliner_id = kuliner.kuliner_id')
+            ->join('media', 'media.media_id = galeri_kuliner.media_id');
+        
+        // Add where slug
+        $builder = $builder->where('kuliner.slug_kuliner', $slugKuliner);
+
+        // Don't include deleted menu
+        $builder = $builder->where('galeri_kuliner.galeri_deleted_at IS NULL');
+
+        // Add sort
+        $dir = 'DESC';
+        if (!$latest) $dir = 'ASC';
+        $builder = $builder->orderBy('galeri_kuliner.galeri_created_at', $dir);
+
+        // Define column selection
+        $builder = $builder->select('galeri_kuliner.galeri_id')
+            ->select('galeri_kuliner.judul')
+            ->select('galeri_kuliner.galeri_created_at')
+            ->select('galeri_kuliner.galeri_created_at')
+            ->select('media.media_nama')
+            ->select('media.media_type')
+            ->select('media.media_slug')
+            ->select('media.media_path');
+
+        return $builder->get();
+    }
 }
