@@ -67,7 +67,7 @@ class Kuliner extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getKuliner(TipeKuliner $tipeKuliner = TipeKuliner::SEMUA, int $memberId = null, int $minPost = 0, int $maxPost = null, $latest = true)
+    public function getKuliner(TipeKuliner $tipeKuliner = TipeKuliner::SEMUA, int $memberId = null, int $minPost = 0, int $maxPost = null, bool $latest = true)
     {
         $builder = $this->builder();
         
@@ -127,6 +127,9 @@ class Kuliner extends Model
         $builder = $builder->join('media', 'media.media_id = kuliner.media_id')
             ->join('membership', 'membership.member_id = kuliner.member_id')
             ->join('user', 'user.user_id = membership.user_id');
+
+        // Add where slug
+        $builder = $builder->where('kuliner.slug_kuliner', $slugKuliner);
         
         // Define column selection
         $builder = $builder->select('kuliner.kuliner_id')
@@ -140,6 +143,38 @@ class Kuliner extends Model
             ->select('kuliner.kuliner_updated_at')
             ->select('kuliner.tipe_kuliner')
             ->select('user.user_nama')
+            ->select('media.media_nama')
+            ->select('media.media_type')
+            ->select('media.media_slug')
+            ->select('media.media_path');
+        
+        return $builder->get();
+    }
+
+    public function getMenuKuliner(string $slugKuliner, bool $cheapest = true)
+    {
+        $builder = $this->builder();
+        
+        // Add join
+        $builder = $builder->join('menu', 'menu.kuliner_id = kuliner.kuliner_id')
+            ->join('media', 'media.media_id = menu.media_id');
+        
+        // Add where slug
+        $builder = $builder->where('kuliner.slug_kuliner', $slugKuliner);
+
+        // Don't include deleted menu
+        $builder = $builder->where('menu.menu_deleted_at IS NULL');
+
+        // Add sort
+        $dir = 'ASC';
+        if (!$cheapest) $dir = 'DESC';
+        $builder = $builder->orderBy('menu.harga_menu', $dir);
+
+        // Define column selection
+        $builder = $builder->select('menu.menu_id')
+            ->select('menu.nama_menu')
+            ->select('menu.deskripsi_menu')
+            ->select('menu.harga_menu')
             ->select('media.media_nama')
             ->select('media.media_type')
             ->select('media.media_slug')
