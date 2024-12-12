@@ -17,7 +17,7 @@ class Feature extends BaseConfig
     /**
      * Use filter execution order in 4.4 or before.
      */
-    public bool $oldFilterOrder = false;
+    public bool $oldFilterOrder = true;
 
     /**
      * The behavior of `limit(0)` in Query Builder.
