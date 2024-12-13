@@ -214,4 +214,39 @@ class MKuliner extends Model
 
         return $builder->get();
     }
+
+    public function getPostKuliner(string $slugKuliner, bool $latest = true)
+    {
+        $builder = $this->builder();
+
+        // Add join
+        $builder = $builder->join('post', 'post.kuliner_id = kuliner.kuliner_id')
+            ->join('media', 'media.media_id = post.media_id')
+            ->join('user', 'user.user_id = post.user_id');
+        
+        // Add where slug
+        $builder = $builder->where('kuliner.slug_kuliner', $slugKuliner);
+
+        // Don't include deleted menu
+        $builder = $builder->where('post.post_deleted_at IS NULL');
+
+        // Add sort
+        $dir = 'DESC';
+        if (!$latest) $dir = 'ASC';
+        $builder = $builder->orderBy('post.post_created_at', $dir);
+
+        // Define column selection
+        $builder = $builder->select('post.post_id')
+            ->select('post.judul')
+            ->select('post.konten')
+            ->select('post.post_created_at')
+            ->select('media.media_nama')
+            ->select('media.media_type')
+            ->select('media.media_slug')
+            ->select('media.media_path')
+            ->select('user.user_id')
+            ->select('user.user_nama');
+        
+        return $builder->get();
+    }
 }
