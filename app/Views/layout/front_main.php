@@ -26,6 +26,8 @@
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
         crossorigin="" />
     <link rel="stylesheet" href="<?= base_url() ?>front/css/style.css">
+    <!-- Toastr css -->
+    <link rel="stylesheet" href="<?php echo base_url() ?>back/plugins/toastr/toastr.min.css">
     <?= $this->renderSection('styles') ?>
     <!-- page title -->
     <title>Starbelly</title>
@@ -92,10 +94,17 @@
     <script src="<?= base_url() ?>front/js/plugins/mapbox.min.js"></script>
     <!-- fancybox js -->
     <script src="<?= base_url() ?>front/js/plugins/fancybox.min.js"></script>
+    <!-- Toastr js -->
+    <script src="<?php echo base_url() ?>back/plugins/toastr/toastr.min.js"></script>
     <!-- starbelly js -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin=""></script>
     <script src="<?= base_url() ?>front/js/main.js"></script>
+
+    <script src="<?php echo base_url() ?>back/js/base.js"></script>
+    <script>
+        var base_url = '<?php echo base_url(); ?>';
+    </script>
     <?= $this->renderSection('scripts') ?>
 </body>

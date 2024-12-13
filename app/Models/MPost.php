@@ -19,6 +19,12 @@ class MPost extends Model
         'slug_post',
         'konten',
         'judul',
+        'post_created_at',
+        'post_created_by',
+        'post_updated_at',
+        'post_updated_at',
+        'post_deleted_by',
+        'post_deleted_by',
     ];
 
     protected bool $allowEmptyInserts = false;

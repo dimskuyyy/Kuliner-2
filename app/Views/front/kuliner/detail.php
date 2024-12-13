@@ -25,6 +25,7 @@
 
     <!-- publication -->
     <section class="sb-publication sb-p-90-0">
+        <!-- Detail Kuliner -->
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -40,9 +41,9 @@
                         </div>
 
                         <div class="sb-post-cover sb-mb-30"><img src="<?= route_to('media', $detailKuliner->media_slug) ?>" alt="<?= $detailKuliner->media_nama ?>"></div>
-                        
+
                         <p class="sb-text sb-mb-30"><?= $detailKuliner->deskripsi ?></p>
-                        
+
                         <h3 class="sb-mb-15">Lokasi:</h3>
                         <p class="sb-text sb-mb-15"><?= $detailKuliner->alamat ?></p>
                         <div id="map" class="sb-post-cover sb-mb-30"></div>
@@ -94,13 +95,73 @@
                 </div>
             </div>
         </div>
+        <!-- Detail Kuliner End -->
+
+        <?php if ($dataPostKuliner->getNumRows() > 0): ?>
+            <!-- post start -->
+            <section class="sb-popular sb-p-60-30">
+                <div class="sb-bg-3">
+                </div>
+                <div class="container">
+                    <div class="sb-group-title sb-mb-30">
+                        <div class="sb-left sb-mb-30">
+                            <h2 class="sb-mb-30">Postingan mengenai kuliner ini</h2>
+
+                            <?php if (!isGuest()): ?>
+                                <!-- button -->
+                                <a href="<?= route_to('front.kuliner.new-post', $detailKuliner->slug_kuliner) ?>" target="_blank" class="sb-btn sb-m-0">
+                                    <span class="sb-icon">
+                                        <img src="<?= base_url('front/img/ui/icons/arrow.svg') ?>" alt="icon">
+                                    </span>
+                                    <span>Buat Post</span>
+                                </a>
+                                <!-- button end -->
+                            <?php endif; ?>
+
+                            <!-- <p class="sb-text">Consectetur numquam poro nemo veniam<br>eligendi rem adipisci quo modi.</p> -->
+                        </div>
+                        <div class="sb-right sb-mb-30">
+                            <!-- slider navigation -->
+                            <div class="sb-slider-nav">
+                                <div class="sb-prev-btn sb-blog-prev"><i class="fas fa-arrow-left"></i></div>
+                                <div class="sb-next-btn sb-blog-next"><i class="fas fa-arrow-right"></i></div>
+                            </div>
+                            <!-- slider navigation end -->
+                        </div>
+                    </div>
+                    <div class="swiper-container sb-blog-slider-3i">
+                        <div class="swiper-wrapper">
+                            <?php foreach ($dataPostKuliner->getResult() as $post): ?>
+                                <div class="swiper-slide">
+                                    <a href="<?= route_to('front.post.detail', $post->slug_post) ?>" class="sb-blog-card sb-mb-30">
+                                        <div class="sb-cover-frame sb-mb-30">
+                                            <img src="<?= route_to('media', $post->media_slug) ?>" alt="<?= $post->media_nama ?>">
+                                            <!-- <div class="sb-badge">Popular</div> -->
+                                        </div>
+                                        <div class="sb-blog-card-descr">
+                                            <h3 class="sb-mb-10"><?= $post->judul ?></h3>
+                                            <div class="sb-suptitle sb-mb-15">
+                                                <span><?= $post->post_created_at ? \CodeIgniter\I18n\Time::parse($post->post_created_at)->humanize() : '' ?></span>
+                                                <span> <?= $post->user_nama ?></span>
+                                            </div>
+                                            <p class="sb-text"><?= $post->excerpt . '...' ?></p>
+                                        </div>
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- post end -->
+        <?php endif; ?>
     </section>
     <!-- publication end -->
 </div>
 <?= $this->endsection() ?>
 <?= $this->section('scripts') ?>
 <script>
-    $(function () {
+    $(function() {
         // Initialize the map and set its view to the specified latitude and longitude
         // const map = L.map('map').setView([0.7893, 113.9213], 5); // Example: Centered on Indonesia
         const map = L.map('map').setView([<?= $detailKuliner->latitude ?>, <?= $detailKuliner->longitude ?>], 15); // Example: Centered on Indonesia
@@ -112,7 +173,7 @@
         }).addTo(map);
 
         // Add a marker at a specific latitude and longitude
-        const latitude = <?= $detailKuliner->latitude ?>;  // Replace with your latitude
+        const latitude = <?= $detailKuliner->latitude ?>; // Replace with your latitude
         const longitude = <?= $detailKuliner->longitude ?>; // Replace with your longitude
         L.marker([latitude, longitude]).addTo(map)
             .bindPopup('<?= $detailKuliner->nama_kuliner ?>') // Add a popup to the marker
