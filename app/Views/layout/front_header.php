@@ -16,9 +16,9 @@
                         <li class="sb-has-children">
                             <a href="<?= base_url('kuliner') ?>">Kuliner</a>
                         </li>
-                        <li class="sb-has-children">
-                            <a href="<?= base_url('post') ?>">Post</a>
-                        </li>
+                        <!-- <li class="sb-has-children">
+                            
+                        </li> -->
                         <!-- <li class="sb-has-children">
                             <a href="about-1.html">K</a>
                             <ul>
