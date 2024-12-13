@@ -134,4 +134,10 @@ class Auth extends BaseController
             return $this->response->setJSON($result);
         }
     }
+
+    public function logout()
+    {
+        session()->destroy();
+        return redirect('front.index');
+    }
 }

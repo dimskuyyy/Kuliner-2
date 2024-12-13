@@ -72,7 +72,7 @@
                             </li>
                         <?php else: ?>
                             <li>
-                                <a href="contact.html">Profil</a>
+                                <a href="<?= route_to('front.auth.logout') ?>">Logout</a>
                             </li>
                         <?php endif; ?>
                     </ul>
