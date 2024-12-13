@@ -61,9 +61,9 @@
                                 <li><a href="checkout.html">Checkout</a></li>
                             </ul>
                         </li> -->
-                        <li>
+                        <!-- <li>
                             <a href="contact.html">Contact</a>
-                        </li>
+                        </li> -->
                         <?php if (isGuest()): ?>
                             <li>
                                 <a href="<?= route_to('front.auth.login') ?>" class="sb-btn m-0 px-3 py-2">
