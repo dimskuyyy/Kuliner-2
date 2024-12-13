@@ -34,7 +34,7 @@
             <!-- filter -->
             <div class="sb-filter mb-30">
                 <?php foreach (\App\Enums\TipeKuliner::cases() as $tipe): ?>
-                    <a href="<?= route_to('kulinerKategori', $tipe->value) ?>" class="sb-filter-link"><?= $tipe->label() ?></a>
+                    <a href="<?= route_to('kuliner.kategori', $tipe->value) ?>" class="sb-filter-link <?= $tipe != \App\Enums\TipeKuliner::tryFrom($kategori) ?: 'sb-active' ?>"><?= $tipe->label() ?></a>
                     <!-- <a href="#." class="sb-filter-link">Starters</a>
                     <a href="#." class="sb-filter-link">Main dishes</a>
                     <a href="#." class="sb-filter-link">Drinks</a>
