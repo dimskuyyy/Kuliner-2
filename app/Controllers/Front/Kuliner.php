@@ -6,6 +6,7 @@ use App\Enums\TipeKuliner;
 use App\Models\Kuliner as ModelsKuliner;
 use App\Models\MKuliner;
 use App\Models\MPost;
+use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Kuliner extends BaseController
 {
@@ -26,8 +27,13 @@ class Kuliner extends BaseController
         return view('front/kuliner/index', compact('dataKuliner'));
     }
 
-    public function detail(): string
+    public function detail($slug)
     {
-        return view('front/kuliner/detail');
+        $kulinerModel = new MKuliner();
+        $detailKuliner = $kulinerModel->getDetailKuliner($slug)->getFirstRow();
+        
+        if (!$detailKuliner) throw new PageNotFoundException('Kuliner tidak ditemukan.');
+
+        return view('front/kuliner/detail', compact('detailKuliner'));
     }
 }

@@ -505,7 +505,7 @@ breadcrumbs
     .sb-breadcrumbs li:last-child:after {
       display: none; }
     .sb-breadcrumbs li:last-child a {
-      cursor: not-allowed;
+      /* cursor: not-allowed; */
       opacity: 1; }
     .sb-breadcrumbs li a {
       padding: 0 10px;
