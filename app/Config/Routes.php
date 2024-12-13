@@ -15,12 +15,13 @@ $routes->post('/login', '\App\Controllers\Front\Auth::auth', ['as' => 'front.aut
 $routes->get('/', '\App\Controllers\Front\Home::index', ['as' => 'front.index']);
 
 $routes->get('/kuliner', '\App\Controllers\Front\Kuliner::index');
+$routes->get('/kuliner/(:segment)', '\App\Controllers\Front\Kuliner::kategori/$1', ['as' => 'kulinerKategori']);
 $routes->get('/kuliner/slug', '\App\Controllers\Front\Kuliner::detail');
 $routes->get('/user/example', '\App\Controllers\Front\Profile::index');
 $routes->get('/post', '\App\Controllers\Front\Post::index');
 $routes->get('/post/slug', '\App\Controllers\Front\Post::detail');
 
-$routes->get('media/(:segment)', '\App\Controllers\Front\MediaAccess::viewMedia/$1');
+$routes->get('media/(:segment)', '\App\Controllers\Front\MediaAccess::viewMedia/$1', ['as' => 'media']);
 
 $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static function ($routes) {
     $routes->get('logout', 'Auth::logout');
