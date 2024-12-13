@@ -104,8 +104,8 @@ class Datatable
         $query = clone $model1;
         $filter = clone $model2;
         if (isset($req['start']) && $req['length'] != -1) {
-            $query->limit($req['length'], $req['start']);
-            $filter->limit($req['length'], $req['start']);
+            $query->limit((int)$req['length'], (int)$req['start']);
+            $filter->limit((int)$req['length'], (int)$req['start']);
         }
 
         //order start

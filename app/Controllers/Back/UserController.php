@@ -32,7 +32,7 @@ class UserController extends BaseController
         if ($req->isAJAX()) {
             $columns = [
                 ['dt' => 'id', 'cond' => 'user_id', 'select' => 'user_id'],
-                ['dt' => 'type', 'cond' => 'user_type', 'select' => 'user_type'],
+                ['dt' => 'level', 'cond' => 'user_level', 'select' => 'user_level'],
                 ['dt' => 'nama', 'cond' => 'user_nama', 'select' => 'user_nama'],
                 ['dt' => 'status', 'cond' => 'user_status', 'select' => 'user_status'],
                 [
@@ -54,7 +54,7 @@ class UserController extends BaseController
             ];
             $model1 = $this->userModel;
             $model2 = new User();
-            $result = (new Datatable())->run($model1->where('user_deleted_at', null)->where('user_level', 2)->orderBy('user_type'), $model2->where('user_deleted_at', null)->where('user_level', 2)->orderBy('user_type'), $req->getVar('datatables'), $columns);
+            $result = (new Datatable())->run($model1->where('user_deleted_at', null)->where('user_status', 2)->where('user_level!=', 1)->orderBy('user_level'), $model2->where('user_deleted_at', null)->where('user_status', 2)->where('user_level!=', 1)->orderBy('user_level'), $req->getVar('datatables'), $columns);
             return $this->response->setJSON($result);
         }
     }
@@ -113,11 +113,10 @@ class UserController extends BaseController
     {
         $data = [
             'user_nama' => $req->getVar('nama'),
-            'user_username' => $req->getVar('username'),
+            'user_email' => $req->getVar('email'),
             'user_password' => $req->getVar('password'),
             'confirm_password' => $req->getVar('confirm_password'),
-            'user_type' => $req->getVar('user_type'),
-            'user_level' => 2,
+            'user_level' => $req->getVar('user_level'),
             'user_status' => $req->getVar('status'),
         ];
         if ($this->userModel->validateCreate($data)) {
@@ -132,17 +131,18 @@ class UserController extends BaseController
 
     private function updateUser($id, $req)
     {
-        if (!$req->getVar('type') && !$req->getVar('status')) {
+        // $level = null;
+        // $status = null;
+        if (!$req->getVar('level') && !$req->getVar('status')) {
             $data = $this->userModel->find($req->getVar('id'));
-            $type = $data['user_type'];
+            $level = $data['user_level'];
             $status = $data['user_status'];
         }
         $data = [
             'user_id' => $req->getVar('id'),
             'user_nama' => $req->getVar('nama'),
-            'user_username' => $req->getVar('username'),
-            'user_type' => $req->getVar('user_type') ?? $type,
-            'user_level' => 2,
+            'user_email' => $req->getVar('email'),
+            'user_level' => $req->getVar('level') ?? $level,
             'user_status' => $req->getVar('status') ?? $status,
         ];
         $this->userModel->setValidationRulesUpdate($id);
@@ -151,35 +151,23 @@ class UserController extends BaseController
             $result = jsonFormat(true, 'User berhasil disimpan');
             if ($data['user_id'] === AuthUser()->id) {
                 $tipe = null;
-                switch ($data['user_type']) {
+                switch ($data['user_level']) {
                     case 1:
-                        $tipe = "Dekan";
+                        $tipe = "SuperAdmin";
                         break;
                     case 2:
-                        $tipe = "Ketua Jurusan";
+                        $tipe = "Member";
                         break;
                     case 3:
-                        $tipe = "Koor Prodi";
-                        break;
-                    case 4:
-                        $tipe = "Ketua Taskforce";
-                        break;
-                    case 5:
-                        $tipe = "Dosen";
-                        break;
-                    case 6:
-                        $tipe = "Mahasiswa";
-                        break;
-                    case 7:
-                        $tipe = "Alumni";
+                        $tipe = "Normal User";
                         break;
                 }
                 $ses = session();
                 $ses->set([
                     'id' => $data['user_id'],
                     'nama' => $data['user_nama'],
-                    'type' => $data['user_type'],
-                    'type_nama' => $tipe,
+                    'level' => $data['user_level'],
+                    'level_nama' => $tipe,
                     'status_akun' => $data['user_status'],
                 ]);
             }

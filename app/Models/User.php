@@ -45,7 +45,7 @@ class User extends Model
             'rules' => 'required|integer|in_list[1,2,3]',
         ],
         'user_status' => [
-            'label' => 'Email',
+            'label' => 'Status',
             'rules' => 'required|integer|in_list[1,2]',
         ]
     ];
