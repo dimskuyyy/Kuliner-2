@@ -65,7 +65,7 @@ class MPost extends Model
         // Add join
         $builder = $builder->join('media', 'media.media_id = post.media_id')
             ->join('user', 'user.user_id = post.user_id')
-            ->join('komentar', 'komentar.post_id = post.post_id')
+            ->join('komentar', 'komentar.post_id = post.post_id', 'left')
             ->join('kuliner', 'kuliner.kuliner_id = post.kuliner_id');
 
         // Don't include deleted kuliner
