@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use CodeIgniter\Database\RawSql;
 use CodeIgniter\Model;
 
 class MPost extends Model
@@ -56,6 +57,57 @@ class MPost extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getPost(bool $mostPopular = true, bool $latest = true, int $limit = null)
+    {
+        $builder = $this->builder();
+        
+        // Add join
+        $builder = $builder->join('media', 'media.media_id = post.media_id')
+            ->join('user', 'user.user_id = post.user_id')
+            ->join('komentar', 'komentar.post_id = post.post_id')
+            ->join('kuliner', 'kuliner.kuliner_id = post.kuliner_id');
+
+        // Don't include deleted kuliner
+        $builder = $builder->where('post.post_deleted_at IS NULL');
+
+        // Add group by
+        $builder = $builder->groupBy('post.post_id');
+
+        // Add sort
+        $dir = 'DESC';
+        if (!$mostPopular) $dir = 'ASC';
+        $builder = $builder->orderBy('jumlah_komentar', $dir);
+
+        // Add sort
+        $dir = 'DESC';
+        if (!$latest) $dir = 'ASC';
+        $builder = $builder->orderBy('post.post_created_at', $dir);
+
+        // Define the selection
+        $builder = $builder->select('post.post_id')
+            ->select('post.slug_post')
+            ->select('post.judul')
+            ->select(new RawSql('CASE WHEN LOCATE(" ", post.konten, 100) > 0 THEN SUBSTRING(post.konten, 1, LOCATE(" ", post.konten, 100)) ELSE SUBSTRING(post.konten, 1, 100) END AS excerpt'))
+            ->select('post.post_created_at')
+            ->select('kuliner.kuliner_id')
+            ->select('kuliner.nama_kuliner')
+            ->select('kuliner.slug_kuliner')
+            ->select('kuliner.deskripsi')
+            ->select('kuliner.alamat')
+            ->select('kuliner.latitude')
+            ->select('kuliner.longitude')
+            ->select('kuliner.tipe_kuliner')
+            ->select('media.media_nama')
+            ->select('media.media_type')
+            ->select('media.media_slug')
+            ->select('media.media_path')
+            ->select('user.user_id')
+            ->select('user.user_nama')
+            ->selectCount('komentar.komentar_id', 'jumlah_komentar');
+        
+        return $builder->get(limit: $limit);
+    }
 
     public function getPostDetail(string $slugPost)
     {

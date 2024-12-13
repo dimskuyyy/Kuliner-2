@@ -2,12 +2,25 @@
 
 namespace App\Controllers\Front;
 
+use App\Models\MKuliner;
+use App\Models\MPost;
+
 class Home extends BaseController
 {
     public function index(): string
     {
-        // session()->destroy();
-        // var_dump(session('id'));die;
-        return view('home');
+        $topKuliner = (new MKuliner())->getKuliner(limit: 10);
+        $topPost = (new MPost())->getPost(limit: 4);
+        $allKuliner = (new MKuliner())->findAll();
+        
+        $allKulinerCoordinates = array_map(function ($item) {
+            return [
+                $item['latitude'],
+                $item['longitude'],
+                $item['nama_kuliner'],
+            ];
+        }, $allKuliner);
+
+        return view('home', compact('topKuliner', 'topPost', 'allKulinerCoordinates'));
     }
 }
