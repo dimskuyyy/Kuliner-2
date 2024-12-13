@@ -11,13 +11,15 @@ class Home extends BaseController
     {
         $topKuliner = (new MKuliner())->getKuliner(limit: 10);
         $topPost = (new MPost())->getPost(limit: 4);
-        $allKuliner = (new MKuliner())->findAll();
+        $allKuliner = (new MKuliner())->getKuliner()->getResultArray();
         
         $allKulinerCoordinates = array_map(function ($item) {
             return [
                 $item['latitude'],
                 $item['longitude'],
                 $item['nama_kuliner'],
+                route_to('media', $item['media_slug']),
+                $item['tipe_kuliner'],
             ];
         }, $allKuliner);
 
