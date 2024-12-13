@@ -71,7 +71,7 @@ class MKuliner extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = ['afterDelete'];
 
-    public function getKuliner(TipeKuliner $tipeKuliner = TipeKuliner::SEMUA, int $memberId = null, int $minPost = 0, int $maxPost = null, bool $latest = true)
+    public function getKuliner(TipeKuliner $tipeKuliner = TipeKuliner::SEMUA, int $memberId = null, bool $mostPopular = true, bool $latest = true, int $limit = null)
     {
         $builder = $this->builder();
         
@@ -94,8 +94,13 @@ class MKuliner extends Model
         $builder = $builder->groupBy('kuliner.kuliner_id');
 
         // Add filter minimum dan maksimum post
-        $builder = $builder->having('jumlah_post >=', $minPost);
-        if ($maxPost) $builder = $builder->having('jumlah_post <=', $maxPost);
+        // $builder = $builder->having('jumlah_post >=', $minPost);
+        // if ($maxPost) $builder = $builder->having('jumlah_post <=', $maxPost);
+
+        // Add sort
+        $dir = 'DESC';
+        if (!$mostPopular) $dir = 'ASC';
+        $builder = $builder->orderBy('jumlah_post', $dir);
 
         // Add sort
         $dir = 'DESC';
@@ -107,6 +112,7 @@ class MKuliner extends Model
             ->select('kuliner.nama_kuliner')
             ->select('kuliner.slug_kuliner')
             ->select('kuliner.deskripsi')
+            ->select(new RawSql('CASE WHEN LOCATE(" ", deskripsi, 100) > 0 THEN SUBSTRING(deskripsi, 1, LOCATE(" ", deskripsi, 100)) ELSE SUBSTRING(deskripsi, 1, 100) END AS excerpt'))
             ->select('kuliner.alamat')
             ->select('kuliner.latitude')
             ->select('kuliner.longitude')
@@ -120,7 +126,7 @@ class MKuliner extends Model
             ->select('media.media_path')
             ->selectCount('post.post_id', 'jumlah_post');
         
-        return $builder->get();
+        return $builder->get(limit: $limit);
     }
 
     public function getDetailKuliner(string $slugKuliner)
