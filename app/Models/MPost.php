@@ -107,6 +107,9 @@ class MPost extends Model
         // Add where slug
         $builder = $builder->where('post.slug_post', $slugPost);
 
+        // Don't include deleted komentar
+        $builder = $builder->where('komentar.komentar_deleted_at IS NULL');
+
         // Add sort
         $dir = 'DESC';
         if (!$latest) $dir = 'ASC';
