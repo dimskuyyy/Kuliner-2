@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Enums\TipeKuliner;
 use CodeIgniter\Model;
 
-class Kuliner extends Model
+class MKuliner extends Model
 {
     protected $table            = 'kuliner';
     protected $primaryKey       = 'kuliner_id';
