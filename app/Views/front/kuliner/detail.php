@@ -198,6 +198,40 @@
             </div>
         </div>
     <?php endif; ?>
+    <?php if ($dataMenuKuliner->getNumRows() > 0) : ?>
+        <section class="sb-menu-section sb-p-90-60">
+            <div class="sb-bg-1">
+                <div></div>
+            </div>
+            <div class="container">
+                <div class="text-center sb-mb-60">
+                    <h2 class="sb-mb-30">Our Menus</h2>
+                    <p class="sb-text">Indulge your taste buds with <br>our signature menu.</p>
+                </div>
+                <div class="row">
+                    <?php foreach ($dataMenuKuliner->getResult() as $menu): ?>
+                        <div class="col-lg-4">
+                            <a data-fancybox="menu" data-no-swup href="<?= route_to('media', $menu->media_slug) ?>" class="sb-menu-item sb-mb-30">
+                                <div class="sb-cover-frame">
+                                    <img src="<?= route_to('media', $menu->media_slug) ?>" alt="<?= $menu->media_nama ?>">
+                                </div>
+                                <div class="sb-card-tp">
+                                    <?php 
+                                        $formatPrice = number_format($menu->harga_menu,0,',','.'); 
+                                    ?>
+                                    <h4 class="sb-card-title"><?= $menu->nama_menu ?></h4>
+                                    <div class="sb-price" style="width: max-content;padding:0px 8px"><sub>Rp.</sub> <?= $formatPrice ?></div>
+                                </div>
+                                <div class="sb-description">
+                                    <p class="sb-text sb-mb-15 clamped-text-three"><?= $menu->deskripsi_menu ?></p>
+                                </div>
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </section>
+    <?php endif; ?>
 </div>
 <?= $this->endsection() ?>
 <?= $this->section('scripts') ?>

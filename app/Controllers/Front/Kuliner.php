@@ -39,8 +39,9 @@ class Kuliner extends BaseController
 
         $dataPostKuliner = $kulinerModel->getPostKuliner($detailKuliner->slug_kuliner);
         $dataGaleriKuliner = $kulinerModel->getGaleriKuliner($detailKuliner->slug_kuliner);
+        $dataMenuKuliner = $kulinerModel->getMenuKuliner($detailKuliner->slug_kuliner);
 
-        return view('front/kuliner/detail', compact('detailKuliner', 'dataPostKuliner', 'dataGaleriKuliner'));
+        return view('front/kuliner/detail', compact('detailKuliner', 'dataPostKuliner', 'dataGaleriKuliner', 'dataMenuKuliner'));
     }
 
     public function newPost($slug)
