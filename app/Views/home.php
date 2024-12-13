@@ -13,7 +13,7 @@
           <!-- main title -->
           <div class="sb-main-title-frame">
             <div class="sb-main-title">
-              <span class="sb-suptitle sb-mb-30">Hi, new friend!</span>
+              <span class="sb-suptitle sb-mb-30">Hi, foodies!</span>
               <h1 class="sb-mb-30">Temukan <span>Kuliner</span>, <br>Terbaik <span>mu</span> di <br>Pekanbaru!</h1>
               <p class="sb-text sb-text-lg sb-mb-30">Jelajahi kuliner Pekanbaru bersama <br>Foodpath! Rute Cepat Rasa Tepat</p>
               <!-- button -->
