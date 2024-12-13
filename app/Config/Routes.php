@@ -62,5 +62,12 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('delete', 'UserController::delete', ['filter' => 'isSuperAdmin']);
         });
 
+        $routes->group('kuliner', ['filter' => ['isMember'], 'namespace' => 'App\Controllers\Back'], static function ($routes) {
+            $routes->get('/', 'Kuliner::index');
+            $routes->post('save', 'Kuliner::save');
+            $routes->post('media', 'Media::getMedia');
+            $routes->post('detail', 'Media::getDetailMedia');
+        });
+
     });
 });

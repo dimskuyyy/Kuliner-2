@@ -26,6 +26,7 @@ class MKuliner extends Model
         'kuliner_updated_at',
         'kuliner_deleted_at',
         'kuliner_deleted_by',
+        'tipe_kuliner'
     ];
 
     protected bool $allowEmptyInserts = false;
@@ -46,11 +47,11 @@ class MKuliner extends Model
         'member_id' => 'required|integer',
         'media_id' => 'required|integer',
         'nama_kuliner' => 'required|string',
-        'slug_kuliner' => 'required|regex_match[/^[a-z0-9_-]+$/]',
+        'slug_kuliner' => 'required',
         'deskripsi' => 'string',
         'alamat' => 'required|string',
-        'latitude' => 'required|regex_match[/^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)]$/]',
-        'longitude' => 'required|regex_match[/^[-+]?((1[0-7]\d)|([1-9]?\d))(\.\d+)?|180(\.0+)?$/]',
+        'latitude' => 'required',
+        'longitude' => 'required',
     ];
     protected $validationMessages   = [];
     protected $skipValidation       = false;
@@ -58,14 +59,14 @@ class MKuliner extends Model
 
     // Callbacks
     protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
+    protected $beforeInsert   = ['beforeInsert'];
     protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
+    protected $beforeUpdate   = ['beforeUpdate'];
     protected $afterUpdate    = [];
     protected $beforeFind     = [];
     protected $afterFind      = [];
     protected $beforeDelete   = [];
-    protected $afterDelete    = [];
+    protected $afterDelete    = ['afterDelete'];
 
     public function getKuliner(TipeKuliner $tipeKuliner = TipeKuliner::SEMUA, int $memberId = null, int $minPost = 0, int $maxPost = null, bool $latest = true)
     {
@@ -248,5 +249,36 @@ class MKuliner extends Model
             ->select('user.user_nama');
         
         return $builder->get();
+    }
+
+    public function getDataInput($id){
+        return $this->builder()
+            ->join('media', 'kuliner.media_id = media.media_id')
+            ->where('kuliner_deleted_at',null)
+            ->where('member_id', $id)
+            ->get()  // Eksekusi query
+            ->getRowArray();;
+    }
+
+    function beforeInsert($data)
+    {
+        $data['data']['kuliner_created_at'] = date('Y-m-d H:i:s');
+        $data['data']['kuliner_created_by'] = AuthUser()->id;
+        return $data;
+    }
+    function beforeUpdate($data)
+    {
+        $data['data']['kuliner_updated_at'] = date('Y-m-d H:i:s');
+        $data['data']['kuliner_updated_by'] = AuthUser()->id;
+        return $data;
+    }
+    function afterDelete($data)
+    {
+        $id = $data['id'][0];
+        $db = \Config\Database::connect();
+        $builder = $db->table('kuliner');
+        $builder->set('kuliner_deleted_by', AuthUser()->id);
+        $builder->where('kuliner_id', $id);
+        $builder->update();
     }
 }

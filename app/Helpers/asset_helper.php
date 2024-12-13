@@ -11,6 +11,16 @@ if(!function_exists('datatableJs')) {
         ?><script src="<?php echo base_url() ?>/back/plugins/datatable/datatables.min.js"></script><?php
     }
 }
+if(!function_exists('leafletCss')){
+    function leafletCss(){
+        ?><link rel="stylesheet" href="<?php echo base_url() ?>/back/plugins/leaflet/leaflet.css"><?php
+    }
+}
+if(!function_exists('leafletJs')){
+    function leafletJs(){
+        ?><script src="<?php echo base_url() ?>/back/plugins/leaflet/leaflet.js"></script><?php
+    }
+}
 if(!function_exists('nestableJs')) {
     function nestableJs()
     {

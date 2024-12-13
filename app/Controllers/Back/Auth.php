@@ -72,7 +72,7 @@ class Auth extends BaseController
     {
         $req = $this->request;
         if ($req->isAJAX()) {
-            session_destroy();
+            session()->destroy();
             return $this->response->setJSON(['status' => true, 'msg' => 'Logout berhasil']);
         }
     }
