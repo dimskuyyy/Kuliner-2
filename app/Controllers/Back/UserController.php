@@ -116,7 +116,7 @@ class UserController extends BaseController
             'user_email' => $req->getVar('email'),
             'user_password' => $req->getVar('password'),
             'confirm_password' => $req->getVar('confirm_password'),
-            'user_level' => $req->getVar('user_level'),
+            'user_level' => $req->getVar('level'),
             'user_status' => $req->getVar('status'),
         ];
         if ($this->userModel->validateCreate($data)) {
