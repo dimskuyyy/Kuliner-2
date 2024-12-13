@@ -57,7 +57,7 @@ class MPost extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getPostDetail(string $slugPost, bool $mostLike = true)
+    public function getPostDetail(string $slugPost)
     {
         $builder = $this->builder();
 
@@ -72,11 +72,6 @@ class MPost extends Model
 
         // Add group by
         $builder = $builder->groupBy('post.post_id');
-
-        // Add sort
-        $dir = 'DESC';
-        if (!$mostLike) $dir = 'ASC';
-        $builder = $builder->orderBy('jumlah_like', $dir);
         
         // Define column selection
         $builder = $builder->select('post.post_id')

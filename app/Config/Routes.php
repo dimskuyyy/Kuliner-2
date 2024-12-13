@@ -26,7 +26,8 @@ $routes->get('/kuliner/post/(:segment)', '\App\Controllers\Front\Kuliner::newPos
 $routes->post('/kuliner/post/(:segment)', '\App\Controllers\Front\Kuliner::storePost/$1', ['as' => 'front.kuliner.store-post']);
 
 $routes->get('/post', '\App\Controllers\Front\Post::index');
-$routes->get('/post/(:segment)', '\App\Controllers\Front\Post::detail', ['as' => 'front.post.detail']);
+$routes->get('/post/(:segment)', '\App\Controllers\Front\Post::detail/$1', ['as' => 'front.post.detail']);
+$routes->post('/post/(:segment)/comment', '\App\Controllers\Front\Post::comment/$1', ['as' => 'front.post.comment']);
 
 $routes->get('/user/example', '\App\Controllers\Front\Profile::index');
 
