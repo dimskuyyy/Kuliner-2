@@ -237,8 +237,8 @@ class MKuliner extends Model
 
         // Define column selection
         $builder = $builder->select('post.post_id')
+            ->select('post.slug_post')
             ->select('post.judul')
-            ->select('post.konten')
             ->select('post.post_created_at')
             ->select('media.media_nama')
             ->select('media.media_type')
