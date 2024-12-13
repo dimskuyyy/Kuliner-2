@@ -31,6 +31,15 @@
     <?= $this->renderSection('styles') ?>
     <!-- page title -->
     <title>FoodPath.PKU</title>
+    <style>
+        .clamped-text-three {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
 </head>
 
 <body>
