@@ -97,67 +97,65 @@
         </div>
         <!-- Detail Kuliner End -->
 
-        <?php if ($dataPostKuliner->getNumRows() > 0): ?>
-            <!-- post start -->
-            <section class="sb-popular sb-p-60-30">
-                <div class="sb-bg-3">
-                </div>
-                <div class="container">
-                    <div class="sb-group-title sb-mb-30">
-                        <div class="sb-left sb-mb-30">
-                            <h2 class="sb-mb-30">Postingan mengenai kuliner ini</h2>
+        <!-- post start -->
+        <section class="sb-popular sb-p-60-30">
+            <div class="sb-bg-3">
+            </div>
+            <div class="container">
+                <div class="sb-group-title sb-mb-30">
+                    <div class="sb-left sb-mb-30">
+                        <h2 class="sb-mb-30">Postingan mengenai kuliner ini</h2>
 
-                            <?php if (!isGuest()): ?>
-                                <!-- button -->
-                                <a href="<?= route_to('front.kuliner.new-post', $detailKuliner->slug_kuliner) ?>" target="_blank" class="sb-btn sb-m-0">
-                                    <span class="sb-icon">
-                                        <img src="<?= base_url('front/img/ui/icons/arrow.svg') ?>" alt="icon">
-                                    </span>
-                                    <span>Buat Post</span>
+                        <?php if (!isGuest()): ?>
+                            <!-- button -->
+                            <a href="<?= route_to('front.kuliner.new-post', $detailKuliner->slug_kuliner) ?>" target="_blank" class="sb-btn sb-m-0">
+                                <span class="sb-icon">
+                                    <img src="<?= base_url('front/img/ui/icons/arrow.svg') ?>" alt="icon">
+                                </span>
+                                <span>Buat Post</span>
+                            </a>
+                            <!-- button end -->
+                        <?php endif; ?>
+
+                        <!-- <p class="sb-text">Consectetur numquam poro nemo veniam<br>eligendi rem adipisci quo modi.</p> -->
+                    </div>
+                    <div class="sb-right sb-mb-30">
+                        <!-- slider navigation -->
+                        <div class="sb-slider-nav">
+                            <div class="sb-prev-btn sb-blog-prev"><i class="fas fa-arrow-left"></i></div>
+                            <div class="sb-next-btn sb-blog-next"><i class="fas fa-arrow-right"></i></div>
+                        </div>
+                        <!-- slider navigation end -->
+                    </div>
+                </div>
+                <div class="swiper-container sb-blog-slider-3i">
+                    <div class="swiper-wrapper">
+                        <?php foreach ($dataPostKuliner->getResult() as $post): ?>
+                            <div class="swiper-slide">
+                                <a href="<?= route_to('front.post.detail', $post->slug_post) ?>" class="sb-blog-card sb-mb-30">
+                                    <div class="sb-cover-frame sb-mb-30">
+                                        <img src="<?= route_to('media', $post->media_slug) ?>" alt="<?= $post->media_nama ?>">
+                                        <!-- <div class="sb-badge">Popular</div> -->
+                                    </div>
+                                    <div class="sb-blog-card-descr">
+                                        <h3 class="sb-mb-10"><?= $post->judul ?></h3>
+                                        <div class="sb-suptitle sb-mb-15">
+                                            <span><?= $post->post_created_at ? \CodeIgniter\I18n\Time::parse($post->post_created_at)->humanize() : '' ?></span>
+                                            <span> <?= $post->user_nama ?></span>
+                                        </div>
+                                        <p class="sb-text"><?= $post->excerpt . '...' ?></p>
+                                    </div>
                                 </a>
-                                <!-- button end -->
-                            <?php endif; ?>
-
-                            <!-- <p class="sb-text">Consectetur numquam poro nemo veniam<br>eligendi rem adipisci quo modi.</p> -->
-                        </div>
-                        <div class="sb-right sb-mb-30">
-                            <!-- slider navigation -->
-                            <div class="sb-slider-nav">
-                                <div class="sb-prev-btn sb-blog-prev"><i class="fas fa-arrow-left"></i></div>
-                                <div class="sb-next-btn sb-blog-next"><i class="fas fa-arrow-right"></i></div>
                             </div>
-                            <!-- slider navigation end -->
-                        </div>
-                    </div>
-                    <div class="swiper-container sb-blog-slider-3i">
-                        <div class="swiper-wrapper">
-                            <?php foreach ($dataPostKuliner->getResult() as $post): ?>
-                                <div class="swiper-slide">
-                                    <a href="<?= route_to('front.post.detail', $post->slug_post) ?>" class="sb-blog-card sb-mb-30">
-                                        <div class="sb-cover-frame sb-mb-30">
-                                            <img src="<?= route_to('media', $post->media_slug) ?>" alt="<?= $post->media_nama ?>">
-                                            <!-- <div class="sb-badge">Popular</div> -->
-                                        </div>
-                                        <div class="sb-blog-card-descr">
-                                            <h3 class="sb-mb-10"><?= $post->judul ?></h3>
-                                            <div class="sb-suptitle sb-mb-15">
-                                                <span><?= $post->post_created_at ? \CodeIgniter\I18n\Time::parse($post->post_created_at)->humanize() : '' ?></span>
-                                                <span> <?= $post->user_nama ?></span>
-                                            </div>
-                                            <p class="sb-text"><?= $post->excerpt . '...' ?></p>
-                                        </div>
-                                    </a>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
-            </section>
-            <!-- post end -->
-        <?php endif; ?>
+            </div>
+        </section>
+        <!-- post end -->
     </section>
     <!-- publication end -->
-    
+
     <?php if ($dataGaleriKuliner->getNumRows() > 0): ?>
         <!-- banner -->
         <section class="sb-banner sb-banner-sm sb-banner-color">
