@@ -299,11 +299,39 @@
         // Array of points [latitude, longitude, popup text]
         const points = JSON.parse('<?= json_encode($allKulinerCoordinates) ?>');
 
+        const customMarkers = {
+            "cafe": L.icon({
+                iconUrl: '<?= base_url('front/img/ui/map-pins/cafe.png') ?>',
+                iconSize: [32, 32],
+                iconAnchor: [16, 32],
+            }),
+            "kantin": L.icon({
+                iconUrl: '<?= base_url('front/img/ui/map-pins/kantin.png') ?>',
+                iconSize: [32, 32],
+                iconAnchor: [16, 32],
+            }),
+            "restoran": L.icon({
+                iconUrl: '<?= base_url('front/img/ui/map-pins/restoran.png') ?>',
+                iconSize: [32, 32],
+                iconAnchor: [16, 32],
+            }),
+            "rumah makan": L.icon({
+                iconUrl: '<?= base_url('front/img/ui/map-pins/rumah makan.png') ?>',
+                iconSize: [32, 32],
+                iconAnchor: [16, 32],
+            }),
+            "street food": L.icon({
+                iconUrl: '<?= base_url('front/img/ui/map-pins/street food.png') ?>',
+                iconSize: [32, 32],
+                iconAnchor: [16, 32],
+            }),
+        }
+
         // Add markers for each point
         points.forEach(point => {
-            const [lat, lng, popupText] = point;
-            L.marker([lat, lng]).addTo(map)
-                .bindPopup(popupText);
+            const [lat, lng, popupText, imgUrl, tipe] = point;
+            L.marker([lat, lng], {icon: customMarkers[tipe]}).addTo(map)
+                .bindPopup(`<img src="${imgUrl}" alt="${popupText}" style="width: 100%; height: auto;">`);
         });
     });
 </script>
