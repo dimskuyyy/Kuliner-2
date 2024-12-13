@@ -103,7 +103,7 @@ class MPost extends Model
 
         // Add join
         $builder = $builder->join('komentar', 'komentar.post_id = post.post_id')
-            ->join('user', 'user.user_id = post.user_id');
+            ->join('user', 'user.user_id = komentar.user_id');
 
         // Add where slug
         $builder = $builder->where('post.slug_post', $slugPost);
