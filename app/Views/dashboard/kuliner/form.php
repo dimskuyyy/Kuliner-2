@@ -108,6 +108,16 @@ $encrypter = Services::encrypter();
         loadMedia(page, keyword)
     }, 800, $('.mymodal #media-list'));
 
+    $(document).on('click', '.mymodal .pagination a', function(e) {
+        let keyword = $('.mymodal #keyword').val();
+        if ($(this).attr('href')) {
+            e.preventDefault();
+            let page = $(this).attr('href');
+            page = page.split('=');
+            loadMedia(page[1], keyword);
+        }
+    });
+    
     function loadMedia(page, keyword = null) {
         $.ajax({
             url: base_url + '/media/list',

@@ -79,5 +79,23 @@ $routes->group('wbpanel', ['namespace' => 'App\Controllers\Back'], static functi
             $routes->post('detail', 'Media::getDetailMedia');
         });
 
+        $routes->group('galeri', static function ($routes) {
+            $routes->get('/', 'Galeri::index');
+            $routes->post('media', 'Media::getMedia');
+            $routes->post('detail', 'Media::getDetailMedia');
+            $routes->post('edit', 'Galeri::edit');
+            $routes->post('save', 'Galeri::save');
+            $routes->post('delete', 'Galeri::delete');
+        });
+
+        $routes->group('menu', static function ($routes) {
+            $routes->get('/', 'Menu::index');
+            $routes->post('media', 'Media::getMedia');
+            $routes->post('detail', 'Media::getDetailMedia');
+            $routes->post('edit', 'Menu::edit');
+            $routes->post('save', 'Menu::save');
+            $routes->post('delete', 'Menu::delete');
+        });
+
     });
 });
