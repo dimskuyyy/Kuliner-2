@@ -17,7 +17,7 @@
               <h1 class="sb-mb-30">Temukan <span>Kuliner</span>, <br>Terbaik <span>mu</span> di <br>Pekanbaru!</h1>
               <p class="sb-text sb-text-lg sb-mb-30">Jelajahi kuliner Pekanbaru bersama <br>Foodpath! Rute Cepat Rasa Tepat</p>
               <!-- button -->
-              <a href="<?=base_url('Kuliner')?>" class="sb-btn">
+              <a href="<?= route_to('kuliner.index') ?>" class="sb-btn">
                 <span class="sb-icon">
                   <img src="<?= base_url() ?>front/img/ui/icons/menu.svg" alt="icon">
                 </span>

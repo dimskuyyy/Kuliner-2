@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\TipeKuliner;
+use CodeIgniter\Database\RawSql;
 use CodeIgniter\Model;
 
 class MKuliner extends Model
@@ -240,6 +241,7 @@ class MKuliner extends Model
         $builder = $builder->select('post.post_id')
             ->select('post.slug_post')
             ->select('post.judul')
+            ->select(new RawSql('CASE WHEN LOCATE(" ", konten, 100) > 0 THEN SUBSTRING(konten, 1, LOCATE(" ", konten, 100)) ELSE SUBSTRING(konten, 1, 100) END AS excerpt'))
             ->select('post.post_created_at')
             ->select('media.media_nama')
             ->select('media.media_type')

@@ -6,6 +6,11 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
+// 404 Override
+$routes->set404Override(function () {
+    return view('errors/html/custom_404');
+});
+
 // Non member or admin authentication
 $routes->get('/register', '\App\Controllers\Front\Auth::register', ['as' => 'front.auth.register', 'filter' => ['guest']]);
 $routes->post('/register', '\App\Controllers\Front\Auth::storeUser', ['as' => 'front.auth.storeUser', 'filter' => ['guest']]);
@@ -14,12 +19,17 @@ $routes->post('/login', '\App\Controllers\Front\Auth::auth', ['as' => 'front.aut
 
 $routes->get('/', '\App\Controllers\Front\Home::index', ['as' => 'front.index']);
 
-$routes->get('/kuliner', '\App\Controllers\Front\Kuliner::index');
-$routes->get('/kuliner/(:segment)', '\App\Controllers\Front\Kuliner::kategori/$1', ['as' => 'kulinerKategori']);
-$routes->get('/kuliner/slug', '\App\Controllers\Front\Kuliner::detail');
-$routes->get('/user/example', '\App\Controllers\Front\Profile::index');
+$routes->get('/kuliner/', '\App\Controllers\Front\Kuliner::index', ['as' => 'front.kuliner.index']);
+$routes->get('/kuliner/(:segment)', '\App\Controllers\Front\Kuliner::index/$1', ['as' => 'front.kuliner.kategori']);
+$routes->get('/kuliner/detail/(:segment)', '\App\Controllers\Front\Kuliner::detail/$1', ['as' => 'front.kuliner.detail']);
+$routes->get('/kuliner/post/(:segment)', '\App\Controllers\Front\Kuliner::newPost/$1', ['as' => 'front.kuliner.new-post']);
+$routes->post('/kuliner/post/(:segment)', '\App\Controllers\Front\Kuliner::storePost/$1', ['as' => 'front.kuliner.store-post']);
+
 $routes->get('/post', '\App\Controllers\Front\Post::index');
-$routes->get('/post/slug', '\App\Controllers\Front\Post::detail');
+$routes->get('/post/(:segment)', '\App\Controllers\Front\Post::detail/$1', ['as' => 'front.post.detail']);
+$routes->post('/post/(:segment)/comment', '\App\Controllers\Front\Post::comment/$1', ['as' => 'front.post.comment']);
+
+$routes->get('/user/example', '\App\Controllers\Front\Profile::index');
 
 $routes->get('media/(:segment)', '\App\Controllers\Front\MediaAccess::viewMedia/$1', ['as' => 'media']);
 

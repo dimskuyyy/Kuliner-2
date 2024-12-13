@@ -34,7 +34,7 @@
             <!-- filter -->
             <div class="sb-filter mb-30">
                 <?php foreach (\App\Enums\TipeKuliner::cases() as $tipe): ?>
-                    <a href="<?= route_to('kulinerKategori', $tipe->value) ?>" class="sb-filter-link"><?= $tipe->label() ?></a>
+                    <a href="<?= route_to('kuliner.kategori', $tipe->value) ?>" class="sb-filter-link <?= $tipe != \App\Enums\TipeKuliner::tryFrom($kategori) ?: 'sb-active' ?>"><?= $tipe->label() ?></a>
                     <!-- <a href="#." class="sb-filter-link">Starters</a>
                     <a href="#." class="sb-filter-link">Main dishes</a>
                     <a href="#." class="sb-filter-link">Drinks</a>
@@ -49,7 +49,7 @@
             <div class="row">
                 <?php foreach ($dataKuliner->getResult() as $kuliner): ?>
                     <div class="col-lg-4">
-                        <a data-no-swup href="#" class="sb-menu-item sb-mb-30">
+                        <a data-no-swup href="<?= route_to('front.kuliner.detail', $kuliner->slug_kuliner) ?>" class="sb-menu-item sb-mb-30">
                             <div class="sb-cover-frame">
                                 <img src="<?= route_to('media', $kuliner->media_slug) ?>" alt="<?= $kuliner->media_nama ?>">
                                 <div class="sb-badge sb-vegan"><?= $kuliner->tipe_kuliner ?></div>
