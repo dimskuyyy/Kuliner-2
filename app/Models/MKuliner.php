@@ -24,7 +24,9 @@ class MKuliner extends Model
         'latitude',
         'longitude',
         'kuliner_created_at',
+        'kuliner_created_by',
         'kuliner_updated_at',
+        'kuliner_updated_by',
         'kuliner_deleted_at',
         'kuliner_deleted_by',
         'tipe_kuliner'

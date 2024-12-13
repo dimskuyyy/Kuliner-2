@@ -8,7 +8,7 @@
     <!-- color of address bar in mobile browser -->
     <meta name="theme-color" content="#F5C332">
     <!-- favicon  -->
-    <link rel="shortcut icon" href="<?= base_url() ?>front/img/ui/logo.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="<?= base_url() ?>front/img/logo-foodpath.png" type="image/x-icon">
     <!-- font awesome css -->
     <link rel="stylesheet" href="<?= base_url() ?>front/css/plugins/font-awesome.min.css">
     <!-- bootstrap css -->
@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="<?php echo base_url() ?>back/plugins/toastr/toastr.min.css">
     <?= $this->renderSection('styles') ?>
     <!-- page title -->
-    <title>Starbelly</title>
+    <title>FoodPath.PKU</title>
 </head>
 
 <body>
