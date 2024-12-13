@@ -51,17 +51,26 @@ class MPost extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 
-    public function getPostDetail(string $slugPost)
+    public function getPostDetail(string $slugPost, bool $mostLike = true)
     {
         $builder = $this->builder();
 
         // Add join
         $builder = $builder->join('media', 'media.media_id = post.media_id')
             ->join('user', 'user.user_id = post.user_id')
-            ->join('kuliner', 'kuliner.kuliner_id = post.kuliner_id');
+            ->join('kuliner', 'kuliner.kuliner_id = post.kuliner_id')
+            ->join('like', 'like.post_id = post.post_id', 'left');
 
         // Add where slug
         $builder = $builder->where('post.slug_post', $slugPost);
+
+        // Add group by
+        $builder = $builder->groupBy('post.post_id');
+
+        // Add sort
+        $dir = 'DESC';
+        if (!$mostLike) $dir = 'ASC';
+        $builder = $builder->orderBy('jumlah_like', $dir);
         
         // Define column selection
         $builder = $builder->select('post.post_id')
@@ -81,7 +90,8 @@ class MPost extends Model
             ->select('media.media_nama')
             ->select('media.media_type')
             ->select('media.media_slug')
-            ->select('media.media_path');
+            ->select('media.media_path')
+            ->selectCount('like.user_id', 'jumlah_like');
         
         return $builder->get();
     }
