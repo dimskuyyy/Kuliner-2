@@ -38,8 +38,9 @@ class Kuliner extends BaseController
         if (!$detailKuliner) throw new PageNotFoundException('Kuliner tidak ditemukan.');
 
         $dataPostKuliner = $kulinerModel->getPostKuliner($detailKuliner->slug_kuliner);
+        $dataGaleriKuliner = $kulinerModel->getGaleriKuliner($detailKuliner->slug_kuliner);
 
-        return view('front/kuliner/detail', compact('detailKuliner', 'dataPostKuliner'));
+        return view('front/kuliner/detail', compact('detailKuliner', 'dataPostKuliner', 'dataGaleriKuliner'));
     }
 
     public function newPost($slug)
