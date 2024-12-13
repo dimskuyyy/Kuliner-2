@@ -24,7 +24,7 @@
     <!-- banner end -->
 
     <!-- publication -->
-    <section class="sb-publication sb-p-90-0">
+    <section class="sb-publication sb-p-90-0 sb-mb-30">
         <!-- Detail Kuliner -->
         <div class="container">
             <div class="row justify-content-center">
@@ -157,6 +157,49 @@
         <?php endif; ?>
     </section>
     <!-- publication end -->
+    
+    <?php if ($dataGaleriKuliner->getNumRows() > 0): ?>
+        <!-- banner -->
+        <section class="sb-banner sb-banner-sm sb-banner-color">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- main title -->
+                        <div class="sb-main-title-frame p-0 py-5">
+                            <div class="sb-main-title text-center">
+                                <div class="sb-suptitle sb-mb-30">Galeri</div>
+                                <h1 class="sb-mb-30">It’s a pity that the photo <br> does not convey the taste!</h1>
+                            </div>
+                        </div>
+                        <!-- main title end -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- banner end -->
+        <!-- gallery -->
+        <div class="sb-p-90-60">
+            <div class="container">
+                <div class="sb-masonry-grid">
+                    <div class="sb-grid-sizer"></div>
+                    <?php foreach ($dataGaleriKuliner->getResult() as $galeri): ?>
+                        <div class="sb-grid-item sb-item-33">
+                            <div class="sb-gallery-item sb-mb-30">
+                                <img src="<?= route_to('media', $galeri->media_slug) ?>" alt="<?= $galeri->media_nama ?>">
+                                <!-- button -->
+                                <a data-fancybox="gallery" data-no-swup href="<?= route_to('media', $galeri->media_slug) ?>" class="sb-btn sb-btn-2 sb-btn-icon sb-btn-gray sb-zoom">
+                                    <span class="sb-icon">
+                                        <img src="<?= base_url('front/img/ui/icons/zoom.svg') ?>" alt="icon">
+                                    </span>
+                                </a>
+                                <!-- button end -->
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
 </div>
 <?= $this->endsection() ?>
 <?= $this->section('scripts') ?>
