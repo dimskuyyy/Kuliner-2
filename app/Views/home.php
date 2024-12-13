@@ -297,7 +297,7 @@
         }).addTo(map);
 
         // Array of points [latitude, longitude, popup text]
-        const points = JSON.parse('<?= json_encode($allKulinerCoordinates) ?>');
+        const points = JSON.parse('<?= addslashes(json_encode($allKulinerCoordinates)) ?>');
 
         const customMarkers = {
             "cafe": L.icon({
