@@ -113,7 +113,7 @@
                 <input type="password" class="form-control py-4" id="password" name="password" placeholder="Enter your password" required>
             </div>
             <!-- Register Button -->
-            <button type="submit" class="btn btn-primary btn-login">Daftar</button>
+            <button type="submit" class="btn btn-primary btn-login">Masuk</button>
         </form>
     </div>
 </div>
