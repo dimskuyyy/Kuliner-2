@@ -72,8 +72,8 @@ class Media extends BaseController
             'nama' => 'required',
             'path' => [
                 'uploaded[path]',
-                'mime_in[path,image/jpg,image/jpeg,image/png,image/webp,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet]',
-                'max_size[path,10240]'
+                'mime_in[path,image/jpg,image/jpeg,image/png,image/webp]',
+                'max_size[path,5120]'
             ]
         ];
         // jika add data tambahkan validation uploaded
